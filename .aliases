@@ -1,0 +1,35 @@
+# PHP
+alias pu="vendor/bin/phpunit"
+alias phpunit="vendor/bin/phpunit"
+alias a="php artisan"
+alias c="composer"
+alias cu="composer update"
+alias cr="composer require"
+alias ci="composer install"
+alias cda="composer dump-autoload -o"
+alias mfs='php artisan migrate:fresh --seed'
+
+alias pp="php artisan test --parallel"
+
+# npm
+alias jest="./node_modules/.bin/jest"
+alias esbuild="npx esbuild"
+
+# Git
+alias g="git"
+alias gs="git status"
+alias gp="git push"
+alias gc="git checkout"
+alias gpo="git push origin"
+alias gm="git merge"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gr="git rebase"
+
+alias npm-update-check-minor="npx npm-check-updates -t minor"
+alias npm-update-check="npx npm-check-updates"
+alias npm-update-minor="npx npm-check-updates -t minor -u"
+alias npm-update-all="npx npm-check-updates -u"
+
+alias code="code-insiders"
+
+alias github="open 'https://github.com'"
