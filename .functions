@@ -1,0 +1,85 @@
+# Run tests
+function p() {
+   if [ -f vendor/bin/pest ]; then
+      vendor/bin/pest "$@"
+   else
+      vendor/bin/phpunit "$@"
+   fi
+}
+
+function pf() {
+   if [ -f vendor/bin/pest ]; then
+      vendor/bin/pest --filter "$@"
+   else
+      vendor/bin/phpunit --filter "$@"
+   fi
+}
+
+#  Commit everything
+function commitAll() {
+  commitMessage="$1"
+
+  if [ "$commitMessage" = "" ]; then
+     commitMessage="wip"
+  fi
+
+  git add .
+  eval "git commit -a -m '${commitMessage}'"
+}
+
+#  Commit
+function commit() {
+  commitMessage="$1"
+
+  if [ "$commitMessage" = "" ]; then
+     commitMessage="wip"
+  fi
+
+  eval "git commit -m '${commitMessage}'"
+}
+
+function db {
+    if [ "$1" = "refresh" ]; then
+        mysql -uroot -e "drop database $2; create database $2"
+    elif [ "$1" = "create" ]; then
+        mysql -uroot -e "create database $2"
+    elif [ "$1" = "drop" ]; then
+        mysql -uroot -e "drop database $2"
+    elif [ "$1" = "list" ]; then
+        mysql -uroot -e "show databases" | perl -p -e's/\|| *//g'
+    fi
+}
+
+function gitclone {
+    git clone $1
+    
+    REPO_NAME=$(printf "$1" | egrep -o 'github.com.[a-zA-Z0-9-]+/[a-zA-Z0-9-]+' | sed -e 's/github.com.//' | egrep -o '/.+' | sed -e 's/\///')
+    
+    cd $REPO_NAME
+}
+
+function gitclonejs {
+    gitclone $1
+
+    CODE_BIN=$(which code)
+    CODEINSIDERS_BIN=$(which code-insiders)
+
+    if [ "$CODE_BIN" != "" ]; then
+        code .        
+    else
+      if [ "$CODEINSIDERS_BIN" != "" ]; then
+          code-insiders .
+      fi
+    fi
+}
+
+function newbr() {
+  branchName="$1"
+  command="git checkout -b '${branchName}'"
+  eval "${command}"
+}
+
+function rmbr() {
+  branchName="$1"
+  eval "git branch -D '${branchName}'"
+}
