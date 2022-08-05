@@ -35,3 +35,6 @@ alias code="code-insiders"
 alias github="open 'https://github.com'"
 
 alias bat="batcat"
+alias m="man"
+alias n="nano"
+alias sn="sudo nano"
