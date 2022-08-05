@@ -33,3 +33,5 @@ alias npm-update-all="npx npm-check-updates -u"
 alias code="code-insiders"
 
 alias github="open 'https://github.com'"
+
+alias bat="batcat"
