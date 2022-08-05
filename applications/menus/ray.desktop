@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Ray
+Comment=Understand and fix bugs faster
+Icon=$HOME/development/images/logos/ray-logo.png
+Exec=$HOME/development/bin/Ray.AppImage
+Actions=
+Categories=Debugger;Development;X-XFCE;X-Xfce-Toplevel;
+Keywords=Development;
+StartupNotify=true

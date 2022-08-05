@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Stashpad
+Comment=Take notes without interrupting your workflow.
+Icon=$HOME/development/logos/stashpad-logo.png
+Exec=$HOME/development/bin/Stashpad.AppImage
+Actions=
+Categories=Development;TextEditor;X-XFCE;X-Xfce-Toplevel;
+Keywords=Notes;Development;
+StartupNotify=true

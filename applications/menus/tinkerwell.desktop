@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Tinkerwell
+Comment=The code runner for PHP
+Icon=$HOME/development/logos/tinkerwell-logo.png
+Exec=$HOME/development/bin/Tinkerwell.AppImage
+Actions=
+Categories=Development;X-XFCE;X-Xfce-Toplevel;
+Keywords=Development;
+StartupNotify=true
