@@ -25,16 +25,26 @@ alias gm="git merge"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gr="git rebase"
 
+# npm update check
 alias npm-update-check-minor="npx npm-check-updates -t minor"
 alias npm-update-check="npx npm-check-updates"
 alias npm-update-minor="npx npm-check-updates -t minor -u"
 alias npm-update-all="npx npm-check-updates -u"
 
-alias code="code-insiders"
-
-alias github="open 'https://github.com'"
+# alias 'code' to 'code-insiders' if 'code' is not installed but code-insiders is
+CODE_BIN=$(which code)
+CODEINSIDERS_BIN=$(which code-insiders)
+if [ "$CODE_BIN" == "" ]; then
+    if [ "$CODEINSIDERS_BIN" != "" ]; then
+        alias code="code-insiders"
+    fi
+fi
 
 alias bat="batcat"
+alias e="$EDITOR"
 alias m="man"
+alias mi="micro"
 alias n="nano"
+alias sm="sudo micro"
 alias sn="sudo nano"
+alias se="sudo $EDITOR"

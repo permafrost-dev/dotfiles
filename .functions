@@ -53,7 +53,7 @@ function db {
 function gitclone {
     git clone $1
     
-    REPO_NAME=$(printf "$1" | egrep -o 'github.com.[a-zA-Z0-9-]+/[a-zA-Z0-9-]+' | sed -e 's/github.com.//' | egrep -o '/.+' | sed -e 's/\///')
+    REPO_NAME=$(printf "$1" | sd '.*github.com..+/(.+)\.git$' '$1')
     
     cd $REPO_NAME
 }
@@ -63,14 +63,17 @@ function gitclonejs {
 
     CODE_BIN=$(which code)
     CODEINSIDERS_BIN=$(which code-insiders)
+    OPEN_CMD="open ."
 
-    if [ "$CODE_BIN" != "" ]; then
-        code .        
-    else
-      if [ "$CODEINSIDERS_BIN" != "" ]; then
-          code-insiders .
-      fi
+    if [ -f "$CODE_BIN" ]; then
+        OPEN_CMD="code ."
     fi
+    
+    if [ -f "$CODEINSIDERS_BIN" ]; then
+        OPEN_CMD="code-insiders ."
+    fi
+    
+    eval "${OPEN_CMD}"
 }
 
 function newbr() {
@@ -89,5 +92,13 @@ function o() {
         open .;
     else
         open "$@";
+    fi;
+}
+
+function github() {
+    if [ $# -eq 0 ]; then
+        open 'https://github.com';
+    else
+        open "https://github.com/$@";
     fi;
 }
