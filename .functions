@@ -83,3 +83,11 @@ function rmbr() {
   branchName="$1"
   eval "git branch -D '${branchName}'"
 }
+
+function o() {
+    if [ $# -eq 0 ]; then
+        open .;
+    else
+        open "$@";
+    fi;
+}
