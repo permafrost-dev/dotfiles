@@ -34,8 +34,8 @@ alias npm-update-all="npx npm-check-updates -u"
 # alias 'code' to 'code-insiders' if 'code' is not installed but code-insiders is
 CODE_BIN=$(which code)
 CODEINSIDERS_BIN=$(which code-insiders)
-if [ "$CODE_BIN" == "" ]; then
-    if [ "$CODEINSIDERS_BIN" != "" ]; then
+if [ ! -f "$CODE_BIN" == "" ]; then
+    if [ -f "$CODEINSIDERS_BIN" ]; then
         alias code="code-insiders"
     fi
 fi

@@ -1,10 +1,10 @@
 # Make micro the default editor if installed, otherwise use nano
 
 MICRO_BIN = $(which micro)
-if [ "$MICRO_BIN" == "" ]; then
-    export EDITOR="nano"
-else
+if [ -e "$MICRO_BIN" ]; then
     export EDITOR="micro"
+else
+    export EDITOR="nano"
 fi
 
 # Larger bash history (allow 32³ entries; default is 500)
